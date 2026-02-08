@@ -48,21 +48,20 @@ pdfmetrics.registerFont(
 import os
 
 def init_db():
-    db = get_db()
-    # ... (your table creation code) ...
-
+    conn = get_db()  # Change 'db' to 'conn' here
+    
     # Check if admin exists
     admin = conn.execute("SELECT * FROM admins WHERE username = ?", ("go.zebra",)).fetchone()
     if not admin:
         from werkzeug.security import generate_password_hash
-        # Look for a password in Render settings; default to a placeholder if missing
-        raw_password = os.environ.get("SECRET_KEY", "ChangeMe123!") 
+        # Use SECRET_KEY from Render, or a fallback
+        raw_password = os.environ.get("SECRET_KEY", "best@zebra1") 
         hashed_pw = generate_password_hash(raw_password)
         
         conn.execute("INSERT INTO admins (username, password_hash) VALUES (?, ?)", 
                      ("go.zebra", hashed_pw))
         conn.commit()
-    db.close()
+    conn.close()
 
 def generate_qr(cert_id):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -455,6 +454,7 @@ def change_password():
 
     return render_template("change_password.html")
 
+init_db()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
