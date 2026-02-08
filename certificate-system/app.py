@@ -44,7 +44,31 @@ pdfmetrics.registerFont(
 pdfmetrics.registerFont(
     TTFont("Allura", os.path.join(FONT_DIR, "Allura-Regular.ttf"))
 )
+def init_db():
+    db = get_db()
+    # Create certificates table
+    db.execute('''CREATE TABLE IF NOT EXISTS certificates (
+        id TEXT PRIMARY KEY, name TEXT, event TEXT, dob TEXT, 
+        gender TEXT, phone TEXT, nationality TEXT, email TEXT, 
+        address TEXT, state TEXT, nin TEXT)''')
+    
+    # Create admins table
+    db.execute('''CREATE TABLE IF NOT EXISTS admins (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        username TEXT UNIQUE, password_hash TEXT)''')
+    
+    # Create default admin if it doesn't exist
+    admin_exists = db.execute("SELECT * FROM admins WHERE username = ?", ("go.zebra",)).fetchone()
+    if not admin_exists:
+        from werkzeug.security import generate_password_hash
+        db.execute("INSERT INTO admins (username, password_hash) VALUES (?, ?)",
+                   ("go.zebra", generate_password_hash("best@zebra1")))
+    
+    db.commit()
+    db.close()
 
+# Call it here
+init_db()
 
 def generate_qr(cert_id):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -435,6 +459,7 @@ def change_password():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 
