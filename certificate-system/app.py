@@ -44,7 +44,25 @@ pdfmetrics.registerFont(
 pdfmetrics.registerFont(
     TTFont("Allura", os.path.join(FONT_DIR, "Allura-Regular.ttf"))
 )
+# At the top of your file, ensure you have:
+import os
 
+def init_db():
+    db = get_db()
+    # ... (your table creation code) ...
+
+    # Check if admin exists
+    admin = conn.execute("SELECT * FROM admins WHERE username = ?", ("go.zebra",)).fetchone()
+    if not admin:
+        from werkzeug.security import generate_password_hash
+        # Look for a password in Render settings; default to a placeholder if missing
+        raw_password = os.environ.get("SECRET_KEY", "ChangeMe123!") 
+        hashed_pw = generate_password_hash(raw_password)
+        
+        conn.execute("INSERT INTO admins (username, password_hash) VALUES (?, ?)", 
+                     ("go.zebra", hashed_pw))
+        conn.commit()
+    db.close()
 
 def generate_qr(cert_id):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
