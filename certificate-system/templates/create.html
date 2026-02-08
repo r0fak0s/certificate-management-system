@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Certificate</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <a href="/admin" class="back-arrow">←</a>
+
+    <div class="container">
+       <h1>Generate Certificate</h1>
+
+<form method="post">
+    <input name="name" placeholder="Full Name" required>
+    <input name="event" placeholder="Training Completed" required>
+
+    <input type="date" name="dob" required>
+    <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <input name="phone" placeholder="Phone Number" required>
+    <input name="email" type="email" placeholder="Email">
+
+    <input name="nationality" placeholder="Nationality">
+    <input name="state" placeholder="State of Residence">
+    <input name="address" placeholder="Address" required>
+    <input name="nin" placeholder="National ID Number">
+
+    <button class="buttons" type="submit">Generate Certificate</button>
+</form>
+        
+    </div>
+</body>
+</html>

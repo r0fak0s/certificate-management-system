@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+        <nav>
+            <a href="/admin" class="active">📊 Dashboard</a>
+            <a href="/registrants">👤 Registrants</a>
+            <a href="/settings">⚙ Settings</a>
+        </nav>
+
+        <a href="/logout" class="logout">🚪 Logout</a>
+    </aside>
+    
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+            <h2>Admin Dashboard</h2>
+           <p class="subtle-count">Total Registrants: {{ count }}</p>
+            <a href="/create" class="btn primary">➕ Generate Certificate</a>
+        </header>
+
+        <!-- CONTENT -->
+        <div class="card">
+            <h3>Issued Certificates</h3>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Event</th>
+                    <th>Actions</th>
+                </tr>
+
+                {% for cert in certs %}
+                <tr>
+                    <td>{{ cert.name }}</td>
+                    <td>{{ cert.event }}</td>
+                    <td>
+                       <a href="/preview/{{ cert.id }}" class="btn primary" target="_blank">
+                           Preview
+                       </a>
+
+                        <a href="/download/{{ cert.id }}" class="btn primary">
+                            Download
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </main>
+</div>
+
+<!-- MODAL -->
+<div id="previewModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <iframe id="previewFrame"></iframe>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>

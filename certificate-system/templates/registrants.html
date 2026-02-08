@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+        <nav>
+            <a href="/admin">📊 Dashboard</a>
+            <a href="/registrants" class="active">👤 Registrants</a>
+            <a href="/settings">⚙ Settings</a>
+        </nav>
+
+        <a href="/logout" class="logout">🚪 Logout</a>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="header">
+            <h2>Registered Individuals</h2>
+        </header>
+
+        <!-- SEARCH -->
+        <div class="search-wrap">
+            <input type="text" id="searchInput" placeholder="Search registrants...">
+        </div>
+
+        <div class="card">
+            <table id="registrantTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Nationality</th>
+                    <th>State</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for r in registrants %}
+                <tr>
+                    <td>{{ r.name }}</td>
+                    <td>{{ r.phone }}</td>
+                    <td>{{ r.email }}</td>
+                    <td>{{ r.nationality }}</td>
+                    <td>{{ r.state }}</td>
+                    <td>
+                        <button class="btn primary" onclick="openRegistrant('{{ r.id }}')">
+                          View
+                        </button>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </main>
+</div>
+<div id="registrantModal" class="modal">
+    <div class="modal-card">
+        <span class="close" onclick="closeRegistrant()">×</span>
+        <div id="registrantDetails"></div>
+    </div>
+</div>
+
+<script>
+    function openRegistrant(id) {
+    fetch(`/registrant/${id}`)
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("registrantDetails").innerHTML = html;
+            document.getElementById("registrantModal").style.display = "flex";
+        });
+}
+
+function closeRegistrant() {
+    document.getElementById("registrantModal").style.display = "none";
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#registrantTable tr");
+
+    rows.forEach((row, index) => {
+        if (index === 0) return;
+        row.style.display = row.innerText.toLowerCase().includes(value) ? "" : "none";
+    });
+});
+</script>
+
+</body>
+</html>

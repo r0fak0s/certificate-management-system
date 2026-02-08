@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate Verification</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+         <img src="{{ url_for('static', filename='images/logo.png') }}" width="120">
+
+       {% if cert %}
+        <h2>Certificate Verified ✅</h2>
+        <p><strong>Name:</strong> {{ cert.name }}</p>
+        <p><strong>Program:</strong> {{ cert.event }}</p>
+        <p><strong>Certificate ID:</strong> {{ cert.id }}</p>
+        
+    {% else %}
+        <h2>Invalid Certificate ❌</h2>
+    {% endif %}
+
+    
+    </div>
+</body>
+</html>
