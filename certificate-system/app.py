@@ -23,7 +23,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 # Ensure folders exist
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-QR_FOLDER = os.path.join(BASE_DIR, "static", "qrcodes")
+QR_FOLDER = os.path.join(BASE_DIR, "QR_FOLDER", "static/qrcodes")
 pdf_folder = os.path.join(BASE_DIR, "static", "certificates")
 
 os.makedirs(QR_FOLDER, exist_ok=True)
@@ -250,7 +250,7 @@ def generate_certificate_pdf(cert):
 
 def get_db():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DB_PATH = os.path.join(BASE_DIR, "certificates.db")
+    DB_PATH = os.environ.get("DB_PATH", "certificates.db")
 
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
