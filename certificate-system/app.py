@@ -64,14 +64,12 @@ def init_db():
     conn.close()
 
 def generate_qr(cert_id):
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    qr_folder = os.path.join(BASE_DIR, "static", "qrcodes")
-    os.makedirs(qr_folder, exist_ok=True)
+    os.makedirs(QR_FOLDER, exist_ok=True)
 
     verify_url = request.url_root.rstrip("/") + f"/verify/{cert_id}"
 
     qr_img = qrcode.make(verify_url)
-    qr_path = os.path.join(qr_folder, f"{cert_id}.png")
+    qr_path = os.path.join(QR_FOLDER, f"{cert_id}.png")
     qr_img.save(qr_path)
 
     return qr_path
