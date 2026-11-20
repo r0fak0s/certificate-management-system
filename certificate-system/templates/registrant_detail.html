@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="detail-card">
+    <h2>{{ r.name }}</h2>
+
+    <div class="detail-grid">
+        <div><strong>DOB:</strong> {{ r.dob }}</div>
+        <div><strong>Gender:</strong> {{ r.gender }}</div>
+        <div><strong>Phone:</strong> {{ r.phone }}</div>
+        <div><strong>Email:</strong> {{ r.email }}</div>
+        <div><strong>Nationality:</strong> {{ r.nationality }}</div>
+        <div><strong>State:</strong> {{ r.state }}</div>
+        <div><strong>Address:</strong> {{ r.address }}</div>
+        <div><strong>NIN:</strong> {{ r.nin }}</div>
+    </div>
+
+    <div style="margin-top:20px;">
+        <a href="/download/{{ r.id }}" class="btn primary">Download Certificate</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+.env
+
+# Databases
+*.db
+
+# Certificates & QR codes
+static/certificates/
+static/qrcodes/
+
+# Secrets / admin scripts
+create_admin.py

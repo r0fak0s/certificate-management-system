@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿<div align="center">
 
 # ≡ƒÄô Certificate Management System
+=======
+<div align="center">
+
+# 🎓 Certificate Management System
+>>>>>>> origin/main
 
 ### Generate. Verify. Trust.
 
@@ -14,7 +20,11 @@
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒôû Overview
+=======
+## 📖 Overview
+>>>>>>> origin/main
 
 Managing certificates shouldn't be stressful.
 
@@ -26,9 +36,15 @@ Whether it's for schools, workshops, conferences, or in this case, training prog
 
 ---
 
+<<<<<<< HEAD
 ## Γ£¿ Features
 
 ### ≡ƒæ¿ΓÇì≡ƒÆ╝ Admin Dashboard
+=======
+## ✨ Features
+
+### 👨‍💼 Admin Dashboard
+>>>>>>> origin/main
 
 - Secure administrator login
 - Modern dashboard interface
@@ -37,7 +53,11 @@ Whether it's for schools, workshops, conferences, or in this case, training prog
 - Download certificates as PDF
 - View previously generated certificates
 
+<<<<<<< HEAD
 ### ≡ƒÄô Certificate Generation
+=======
+### 🎓 Certificate Generation
+>>>>>>> origin/main
 
 - Dynamic certificate creation
 - Automatic PDF generation
@@ -45,7 +65,11 @@ Whether it's for schools, workshops, conferences, or in this case, training prog
 - Unique certificate IDs
 - Professional certificate layout
 
+<<<<<<< HEAD
 ### ≡ƒöì Certificate Verification
+=======
+### 🔍 Certificate Verification
+>>>>>>> origin/main
 
 - Public verification page
 - QR Code verification
@@ -53,7 +77,11 @@ Whether it's for schools, workshops, conferences, or in this case, training prog
 - Instant authenticity check
 - Prevents certificate forgery
 
+<<<<<<< HEAD
 ### ≡ƒô▒ QR Code Integration
+=======
+### 📱 QR Code Integration
+>>>>>>> origin/main
 
 Every generated certificate contains a QR code that links directly to the verification page.
 
@@ -61,7 +89,11 @@ Simply scan the QR code to confirm the certificate is genuine.
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒ¢á∩╕Å Built With
+=======
+## 🛠️ Built With
+>>>>>>> origin/main
 
 | Technology | Purpose |
 |------------|---------|
@@ -76,6 +108,7 @@ Simply scan the QR code to confirm the certificate is genuine.
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒôé Project Structure
 
 ```
@@ -98,11 +131,39 @@ Certificate-Management-System/
 Γö£ΓöÇΓöÇ app.py
 Γö£ΓöÇΓöÇ requirements.txt
 ΓööΓöÇΓöÇ README.md
+=======
+## 📂 Project Structure
+
+```
+Certificate-Management-System/
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   ├── uploads/
+│   └── generated_certificates/
+│
+├── templates/
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── generate.html
+│   ├── verify.html
+│   └── ...
+│
+├── database.db
+├── app.py
+├── requirements.txt
+└── README.md
+>>>>>>> origin/main
 ```
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒÜÇ Getting Started
+=======
+## 🚀 Getting Started
+>>>>>>> origin/main
 
 ### 1. Clone the Repository
 
@@ -152,7 +213,11 @@ http://127.0.0.1:5000
 ---
 
 
+<<<<<<< HEAD
 ## ≡ƒöÆ Security Features
+=======
+## 🔒 Security Features
+>>>>>>> origin/main
 
 - Password hashing
 - Unique verification tokens
@@ -162,7 +227,11 @@ http://127.0.0.1:5000
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒÆí Future Improvements
+=======
+## 💡 Future Improvements
+>>>>>>> origin/main
 
 - Email certificate delivery
 - Bulk certificate generation
@@ -175,7 +244,11 @@ http://127.0.0.1:5000
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒÄ» Use Cases
+=======
+## 🎯 Use Cases
+>>>>>>> origin/main
 
 - Universities
 - Schools
@@ -189,7 +262,11 @@ http://127.0.0.1:5000
 
 ---
 
+<<<<<<< HEAD
 ## ≡ƒñ¥ Contributing
+=======
+## 🤝 Contributing
+>>>>>>> origin/main
 
 Contributions are always welcome.
 
@@ -202,7 +279,11 @@ If you'd like to improve the project:
 
 ---
 
+<<<<<<< HEAD
 ## Γ¡É Why This Project?
+=======
+## ⭐ Why This Project?
+>>>>>>> origin/main
 
 Traditional certificate generation often involves repetitive manual work and offers little protection against forgery.
 
