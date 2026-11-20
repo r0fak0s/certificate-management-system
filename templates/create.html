@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Certificate</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <a href="/admin" class="back-arrow">←</a>
+
+    <div class="container">
+       <h1>Generate Certificate</h1>
+
+        {% if error %}
+            <p style="color: #b42318; font-weight: 600;">{{ error }}</p>
+        {% endif %}
+
+<form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input name="name" placeholder="Full Name" required>
+    <input name="event" placeholder="Training Completed" required>
+
+    <label for="certificate_date" style="display:block; text-align:left; margin-top:12px; font-weight:600;">
+        Certificate Date
+    </label>
+    <input type="date" id="certificate_date" name="certificate_date" required>
+
+    <input type="date" name="dob" required>
+    <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <input name="phone" placeholder="Phone Number" required>
+    <input name="email" type="email" placeholder="Email">
+
+    <input name="nationality" placeholder="Nationality">
+    <input name="state" placeholder="State of Residence">
+    <input name="address" placeholder="Address" required>
+    <input name="nin" placeholder="National ID Number">
+
+    <button class="buttons" type="submit">Generate Certificate</button>
+</form>
+        
+    </div>
+</body>
+</html>
